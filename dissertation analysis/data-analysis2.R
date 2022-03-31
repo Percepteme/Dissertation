@@ -1,10 +1,10 @@
-
+######## Plotting of all quantitative figures and statistical analysis in R ###### 
 
 ### Data analysis from inference-analysis-conversion.py pipeline
 library(ggplot2)
 library(dplyr)
 
-setwd("/home/caiusgibeily/Downloads/Training-Optocamp/test/")
+setwd("...")
 
 dat <- read.csv("NumPulses-Width.csv",sep=",",header= T)
 dat1 <- subset(dat,fov!=1)
@@ -80,7 +80,7 @@ summary(mod)
   
   #########################
   ## Trial 2
-  setwd("/home/caiusgibeily/Downloads/Training-Optocamp/test/Low-level-analysis/Parameter search/Data/")
+  setwd("...")
   
   dat <- read.csv("session_1-PW-NP-FOVs_0-1-4-5.csv",sep=",",header= T)
   
@@ -121,7 +121,7 @@ summary(mod)
 TukeyHSD(mod)
 ###########################
 ### Peak amp and bd for parameter search
-setwd("/home/caiusgibeily/Downloads/Training-Optocamp/test/Low-level-analysis/Parameter search/Data/")
+setwd("...")
 
 dat <- read.csv("data-np-pw.csv",sep=",",header= T)
 dat$np = as.factor(dat$np)
@@ -200,7 +200,7 @@ mod <- anova(lm(dur ~ pw*np, data = dat2))
 
 summary(mod)
 
-setwd("/home/caiusgibeily/Downloads/Training-Optocamp/test/Low-level-analysis/CNQX/")
+setwd("...")
 
 dat <- read.csv("before-after-average.csv",sep=",",header= T)
 dat$drug <- as.factor(dat$drug)
@@ -225,7 +225,7 @@ slope <- dat %>%
 agg = round(aggregate(slope ~  np + pw, dat, mean),3)
 
 ############### Low-level analysis - drug effect ####
-setwd("/home/caiusgibeily/Downloads/Training-Optocamp/test/Low-level-analysis/CNQX/")
+setwd("...")
 
 dat <- read.csv("before-after-average.csv",sep=",",header= T)
 dat$drug <- as.factor(dat$drug)
@@ -307,7 +307,7 @@ ggplot(dat,aes(x=fov,y=dur,fill=drug)) +
 
 
 ########## Aβ treatment #############
-setwd("/home/caiusgibeily/Downloads/Training-Optocamp/test/Low-level-analysis/Aβ/")
+setwd("...")
 
 dat <- read.csv("abeta-dur.csv",sep=",",header= T)
 dat$conc <- as.factor(dat$conc)
@@ -359,7 +359,7 @@ ggplot(dat,aes(x=treat,y=diff,fill="coral",color="coral")) +
 
 #######
 ## Midlevel correlation analysis
-setwd("/home/caiusgibeily/Downloads/Training-Optocamp/test/Mid-level analysis/Aperture cross-correlation/")
+setwd("...")
 
 dat <- read.csv("correlation_averages.csv",sep=",",header= T)
 dat$conc <- as.factor(dat$conc)
@@ -435,7 +435,7 @@ ggplot(dat,aes(x=part,y=error,color=status,fill=status)) +
 
 ############################# Num ROIs
 
-setwd("/home/caiusgibeily/Downloads/Training-Optocamp/test/CAITCHA/")
+setwd("...")
 dat <- read.csv("completion_times.csv",sep=",",header= T)
 
 m12 = subset(dat,dat$part=="m12")
