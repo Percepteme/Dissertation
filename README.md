@@ -2,6 +2,7 @@
 Compilation of all code developed and used on the project
 
 **Repository index**
+
 _Acquisition_ – contains the code under development for automated closed-loop microscopy. This mode covers three features: the timelapse of timelapse functionality, engram reconstruction and data roving.
 
 _ImageJ macros_ – all sourced and developed macros for ImageJ
