@@ -3,7 +3,6 @@
 """
 Pycro-manager integration
 
-@author: caiusgibeily
 """
 
 from pycromanager import Acquisition, multi_d_acquisition_events, Bridge
@@ -11,6 +10,7 @@ import numpy as np
 import argparse as ag
 import os
 from time import sleep
+
 ### OLD pycro-manager code ###
 ##############################
 ## Connect to running ZMQ server (port 4897) and micromanager
