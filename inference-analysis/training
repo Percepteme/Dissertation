@@ -1,0 +1,2 @@
+python -m cellpose --train --dir ~/Downloads/Training-Optocamp/training/ --test_dir ~/Downloads/Training-Optocamp/training/test/ --pretrained_model ~/Downloads/Training-Optocamp/training/models/cellpose_residual_on_style_on_concatenation_off_training_2022_03_26_12_52_15.634370 --img_filter _img --mask_filter _masks --use_gpu --verbose
+

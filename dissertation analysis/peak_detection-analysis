@@ -1,0 +1,88 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Mar 15 17:18:44 2022
+
+@author: caiusgibeily
+"""
+import random
+import numpy as np
+import os, glob
+from natsort import natsorted
+import pandas as pd
+import matplotlib.pyplot as plt
+import scipy.signal as sci
+from scipy.signal import find_peaks, find_peaks_cwt
+catdir = "/home/caiusgibeily/Documents/Year_4/BL4201/CAITCHA test/"
+os.chdir(catdir)
+######### Dissertation analysis ##############
+##############################################
+######### Low-level ##########################
+
+dat = np.array(pd.read_csv("test.csv",sep=","))
+IntTime = 0.1
+time = np.multiply(dat[:,0],IntTime)
+data = dat[:,1:]
+
+F0 = dat[0,1:]
+DF = np.subtract(data, F0)
+DFNormF0 = np.divide(DF,F0)
+
+raster = np.zeros(shape=DFNormF0.shape)
+for i in range(len(DFNormF0[0,:])):
+    val = i
+    thresh = np.max(DFNormF0[:,val])*0.6
+    x = find_peaks(DFNormF0[:,val],height = thresh,distance=15)
+    raster[x[0],i] = x[0]*IntTime
+    
+plt.show()
+plt.eventplot(np.transpose(raster),linelength=0.7)
+plt.xlim((0.1,10))
+
+    #plt.plot(x[0], DFNormF0[x[0],val], "ob"); plt.plot(DFNormF0[:,val])
+    #plt.show()
+
+
+
+
+
+
+
+def rasterplot(data,**kwargs):
+    spikearray = np.empty(data.shape)
+    for i,neuron in enumerate(data[0]):    
+        val = i
+        thresh = np.max(data[:,val])*0.6
+        x = find_peaks(data[:,val],height = thresh,distance=15)
+        raster[x[0],i] = x[0]*IntTime
+        if "showpeaks" in kwargs and kwargs["showpeaks"] == True:
+            plt.plot(x[0], DFNormF0[x[0],val], "ob"); plt.plot(DFNormF0[:,val])
+            plt.show()
+            
+    plt.show()
+    plt.eventplot(np.transpose(raster), linelengths=0.7)  
+    plt.xlim((0.1,10))
+    plt.yticks(np.arange(0,len(data[0]),2))
+    plt.xlabel("Time (s)")
+    plt.ylabel("Neuron ID")
+    plt.title("Raster plot of spike trains")
+    return raster
+    
+
+
+    #plt.savefig(os.path.join(imdir + os.path.splitext(os.path.basename(str(imfiles[video])))[0] + '_raster-plot_' + '.pdf'))
+    #plt.close()
+
+plt.plot(time,raster)
+plt.xlim(2,3.25)
+
+plt.show()
+plt.eventplot(v,linelengths=0.7)
+
+v = np.where(raster!=0)
+v = np.array((v[:,1],v[:,0])
+plt.xlim((0,100))
+c = rasterplot(DFNormF0,height=1,width=10)
+
+
+
